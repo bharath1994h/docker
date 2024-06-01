@@ -10,7 +10,7 @@ services:
        MYSQL_DATABASE: mysql_compose
        MYSQL_USER: bh
        MYSQL_PASSWORD: 123456
-     volume:
+     volumes:
        - mysq_data:/var/lib/mysql
      networks:
        - my-network
@@ -26,7 +26,7 @@ services:
          WORDPRESS_DB_USER: bh
          WORDPRESS_DB_PASSWORD: 123456
          WORDPRESS_DB_NAME: mysql_compose
-      volume: 
+      volumes: 
         - wp:/var/www/html/
       networks:
         - my-network
