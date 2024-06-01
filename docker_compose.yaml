@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+   db:
+     image: mysql:latest
+     container_name: mysql_compose
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: 123456
+       MYSQL_DATABASE: mysql_compose
+       MYSQL_USER: bh
+       MYSQL_PASSWORD: 123456
+     volume:
+       - mysq_data:/var/lib/mysql
+     networks:
+       - my-network
+     ports:
+       - 3306:3306
+   wordpress:
+      depends_on:
+        - db
+      image: wordpress:latest
+      restart: always
+      environment:
+         WORDPRESS_DB_HOST: mysql_compose
+         WORDPRESS_DB_USER: bh
+         WORDPRESS_DB_PASSWORD: 123456
+         WORDPRESS_DB_NAME: mysql_compose
+      volume: 
+        - wp:/var/www/html/
+      networks:
+        - my-network
+      ports:
+        - 8080:80
+volumes:
+  mysq_data:
+  wp:
+networks:
+  my-network:
+    driver: bridge             
