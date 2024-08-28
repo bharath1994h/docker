@@ -11,7 +11,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.actor == 'user1' || github.actor == 'user2' || github.actor == 'user3'  # Replace with actual usernames
+    if: github.actor == 'bharath1994h' || github.actor == 'user2' || github.actor == 'user3'  # Replace with actual usernames
 
     steps:
       - name: Checkout Code
